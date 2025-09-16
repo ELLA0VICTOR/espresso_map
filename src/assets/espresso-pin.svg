@@ -1,0 +1,47 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="espressoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5D2F0A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main pin shape -->
+  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" 
+        fill="url(#espressoGrad)" 
+        stroke="#3D1B06" 
+        stroke-width="0.5"/>
+  
+  <!-- Coffee cup icon -->
+  <g transform="translate(12,9) scale(0.6)">
+    <!-- Cup body -->
+    <path d="M-4,-3 L4,-3 L3,3 L-3,3 Z" 
+          fill="#FFF" 
+          stroke="#8B4513" 
+          stroke-width="0.5"/>
+    <!-- Coffee -->
+    <rect x="-3" y="-2" width="6" height="3" fill="#8B4513" rx="0.5"/>
+    <!-- Handle -->
+    <path d="M4,-1 Q6,-1 6,1 Q6,3 4,3" 
+          fill="none" 
+          stroke="#FFF" 
+          stroke-width="1"/>
+    <!-- Steam -->
+    <path d="M-1,-4 Q-1,-5 0,-5 Q1,-5 1,-4" 
+          fill="none" 
+          stroke="#FFF" 
+          stroke-width="0.8" 
+          stroke-linecap="round"/>
+    <path d="M1,-4 Q1,-5 2,-5 Q3,-5 3,-4" 
+          fill="none" 
+          stroke="#FFF" 
+          stroke-width="0.8" 
+          stroke-linecap="round"/>
+  </g>
+  
+  <!-- Highlight dot -->
+  <circle cx="12" cy="9" r="1.5" fill="rgba(255,255,255,0.3)"/>
+  
+  <!-- Shadow -->
+  <ellipse cx="12" cy="22" rx="2" ry="0.5" fill="rgba(0,0,0,0.2)"/>
+</svg>

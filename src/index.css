@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  }
+}
+
+@layer components {
+  .map-container {
+    @apply w-full h-full min-h-[400px] bg-blue-50 dark:bg-blue-900/20 rounded-lg overflow-hidden;
+  }
+  
+  .event-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 
+           hover:shadow-md transition-shadow cursor-pointer p-4;
+  }
+  
+  .event-card:hover {
+    @apply transform -translate-y-0.5 transition-transform;
+  }
+  
+  .marker-past {
+    @apply text-espresso-600 hover:text-espresso-700 transition-colors;
+  }
+  
+  .marker-upcoming {
+    @apply text-coffee-500 hover:text-coffee-600 transition-colors;
+  }
+}
