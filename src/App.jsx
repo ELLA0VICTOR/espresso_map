@@ -24,16 +24,17 @@ function App() {
   
   useEffect(() => {
     loadEvents()
+  
     const stored = localStorage.getItem('darkMode')
-    let isDark = false
+    let isDark = false // default -> light
+  
     if (stored !== null) {
       isDark = stored === 'true'
-      } else if (typeof window !== 'undefined' && window.matchMedia) {
-        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      }
-      setDarkMode(isDark)
-      document.documentElement.classList.toggle('dark', isDark)
-    }, [])
+    }
+    setDarkMode(isDark)
+    document.documentElement.classList.toggle('dark', isDark)
+  }, [])
+  
 
 
   useEffect(() => {
