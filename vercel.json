@@ -12,11 +12,8 @@
         "VITE_ESPRESSO_API_URL": "https://api.espresso.com"
       }
     },
-    "functions": {
-      "app/api/**/*.js": {
-        "runtime": "nodejs18.x"
-      }
-    },
+   
+    
     "rewrites": [
       {
         "source": "/embed",
