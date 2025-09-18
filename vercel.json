@@ -5,11 +5,11 @@
     "installCommand": "npm install",
     "devCommand": "npm run dev",
     "env": {
-      "VITE_ESPRESSO_API_URL": "@espresso_api_url"
+      "VITE_ESPRESSO_API_URL": "https://api.espresso.com"
     },
     "build": {
       "env": {
-        "VITE_ESPRESSO_API_URL": "@espresso_api_url"
+        "VITE_ESPRESSO_API_URL": "https://api.espresso.com"
       }
     },
     "functions": {
