@@ -9,6 +9,7 @@ import { espressoClient } from './lib/espressoClient'
 import eventsData from '../data/events.json'
 
 function App() {
+  const isEmbedMode = new URLSearchParams(window.location.search).get('embed') === 'true'
   const [events, setEvents] = useState([])
   const [filteredEvents, setFilteredEvents] = useState([])
   const [selectedEvent, setSelectedEvent] = useState(null)
@@ -92,6 +93,26 @@ function App() {
     localStorage.setItem('darkMode', newDarkMode.toString())
     document.documentElement.classList.toggle('dark', newDarkMode)
   }
+
+  if (isEmbedMode) {
+    return (
+      <div className="w-full h-screen bg-white dark:bg-gray-900">
+        <WorldMap
+          events={filteredEvents}
+          center={mapCenter}
+          onMarkerClick={handleMarkerClick}
+        />
+        {selectedEvent && (
+          <EventModal
+            event={selectedEvent}
+            isOpen={!!selectedEvent}
+            onClose={() => setSelectedEvent(null)}
+          />
+        )}
+      </div>
+    )
+  }
+
 
   if (loading) {
     return (

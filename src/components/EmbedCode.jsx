@@ -11,27 +11,27 @@ const EmbedCode = ({ isOpen, onClose }) => {
   
   const embedCodes = {
     iframe: `<iframe 
-  src="${baseUrl}/embed" 
-  width="100%" 
-  height="600" 
-  frameborder="0" 
-  title="Espresso World Map">
-</iframe>`,
+      src="${baseUrl}?embed=true" 
+      width="100%" 
+      height="600" 
+      frameborder="0" 
+      title="Espresso World Map">
+    </iframe>`,
     script: `<div id="espresso-map"></div>
-<script>
-  (function() {
-    var iframe = document.createElement('iframe');
-    iframe.src = '${baseUrl}/embed';
-    iframe.width = '100%';
-    iframe.height = '600px';
-    iframe.frameBorder = '0';
-    iframe.title = 'Espresso World Map';
-    document.getElementById('espresso-map').appendChild(iframe);
-  })();
-</script>`,
-    url: `${baseUrl}/embed`
+    <script>
+      (function() {
+        var iframe = document.createElement('iframe');
+        iframe.src = '${baseUrl}?embed=true';
+        iframe.width = '100%';
+        iframe.height = '600px';
+        iframe.frameBorder = '0';
+        iframe.title = 'Espresso World Map';
+        document.getElementById('espresso-map').appendChild(iframe);
+      })();
+    </script>`,
+    url: `${baseUrl}?embed=true`
   }
-
+  
   const copyToClipboard = async (text) => {
     try {
       await navigator.clipboard.writeText(text)
