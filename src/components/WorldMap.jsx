@@ -12,8 +12,8 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
 const EspressoPin = ({ className = "" }) => (
   <motion.svg 
-    width="28" 
-    height="28" 
+    width="16" 
+    height="16" 
     viewBox="0 0 24 24" 
     fill="currentColor"
     className={className}
@@ -46,8 +46,8 @@ const EspressoPin = ({ className = "" }) => (
 
 const PulseRing = ({ className = "" }) => (
   <motion.svg 
-    width="32" 
-    height="32" 
+    width="18" 
+    height="18" 
     viewBox="0 0 32 32"
     className={className}
     initial={{ scale: 0 }}
@@ -292,10 +292,10 @@ const WorldMap = ({ events, center, onMarkerClick }) => {
                 {/* City Label */}
                 <motion.text
                   textAnchor="middle"
-                  y={event.type === 'past' ? 40 : 45}
+                  y={event.type === 'past' ? 24 : 26}
                   className="fill-slate-700 dark:fill-slate-300 text-sm font-semibold pointer-events-none select-none"
                   style={{ 
-                    fontSize: '12px',
+                    fontSize: '9px',
                     textShadow: isDark 
                       ? '0 1px 3px rgba(0, 0, 0, 0.5)' 
                       : '0 1px 3px rgba(255, 255, 255, 0.8)'
@@ -309,11 +309,11 @@ const WorldMap = ({ events, center, onMarkerClick }) => {
                 
                 {/* Hover tooltip background */}
                 <motion.rect
-                  x="-40"
-                  y="-60"
-                  width="80"
-                  height="20"
-                  rx="10"
+                  x="-30"
+                  y="-40"
+                  width="60"
+                  height="14"
+                  rx="7"
                   fill="rgba(0, 0, 0, 0.8)"
                   className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
                 />
@@ -321,9 +321,9 @@ const WorldMap = ({ events, center, onMarkerClick }) => {
                 {/* Hover tooltip text */}
                 <motion.text
                   textAnchor="middle"
-                  y="-47"
+                  y="-32"
                   className="fill-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
-                  style={{ fontSize: '10px' }}
+                  style={{ fontSize: '8px' }}
                 >
                   Click for details
                 </motion.text>

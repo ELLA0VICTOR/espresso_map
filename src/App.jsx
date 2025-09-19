@@ -134,7 +134,7 @@ function App() {
           <div className="flex justify-between items-center py-4">
            
             <div className='flex items-center space-x-3'>
-              <img src="/assets/espresso-logo.png"
+              <img className='dark:bg-white' src="/assets/espresso-logo.png"
                 alt='Espresso Logo'
                 width={null}
                 height={null}
