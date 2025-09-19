@@ -77,7 +77,7 @@
   /* Enhanced map container - responsive */
   .map-container {
     @apply w-full h-full rounded-2xl overflow-hidden relative;
-    background: linear-gradient(135deg, var(--map-water-light) 0%, var(--map-land-light) 100%);
+    background:  var(--map-water-light);
     box-shadow: 
       0 20px 25px -5px rgba(0, 0, 0, 0.1),
       0 10px 10px -5px rgba(0, 0, 0, 0.04),
