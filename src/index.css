@@ -49,11 +49,7 @@
 }
 
 @layer components {
-  /* Full-screen app container */
-  /*.app-container {
-    @apply min-h-screen w-full overflow-x-hidden;
-  }
-
+  
   /* Enhanced header with gradient */
   .app-header {
     @apply sticky top-0 z-50;
@@ -76,13 +72,7 @@
     letter-spacing: -0.02em;
   }
 
-  /* Responsive grid layout */
-  /*.main-grid {
-    @apply grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-4 lg:gap-6;
-    @apply min-h-[calc(100vh-5rem)];
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6;
-    @apply w-full;
-  }
+  
 
   /* Enhanced map container - responsive */
   .map-container {
@@ -335,4 +325,138 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+/* Performance optimizations for WorldMap component */
+
+/* GPU acceleration for map container */
+.map-container {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Optimize SVG rendering */
+.map-container svg {
+  shape-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* FIXED: Prevent zoom scaling on markers */
+.marker-past svg,
+.marker-upcoming svg {
+  vector-effect: non-scaling-stroke !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+}
+
+.marker-upcoming svg {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+}
+
+/* FIXED: Prevent text scaling */
+.map-container text {
+  vector-effect: non-scaling-stroke !important;
+  text-rendering: geometricPrecision;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+/* Reduce repaints during interactions */
+.map-container path {
+  will-change: fill, stroke;
+}
+
+/* Optimize marker animations */
+.marker-past,
+.marker-upcoming {
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .map-container {
+    /* Reduce quality on mobile for better performance */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Simplify animations on mobile */
+  .marker-past motion-g,
+  .marker-upcoming motion-g {
+    animation-duration: 0.3s !important;
+  }
+  
+  /* Disable expensive effects on mobile */
+  .marker-past svg,
+  .marker-upcoming svg {
+    filter: none !important;
+  }
+}
+
+/* Power saver mode optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .map-container * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .marker-past,
+  .marker-upcoming {
+    animation: none !important;
+  }
+}
+
+/* Improve scrolling performance */
+.sidebar-card {
+  contain: layout style paint;
+  will-change: scroll-position;
+}
+
+/* Optimize for low-end devices */
+@media (max-width: 480px) {
+  .map-container {
+    /* Use CSS transforms instead of SVG transforms where possible */
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Reduce animation complexity */
+  .pulse-ring {
+    animation: none !important;
+  }
+  
+  /* Force smaller markers on very small screens */
+  .marker-past svg,
+  .marker-upcoming svg {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+  }
+  
+  .map-container text {
+    font-size: 12px !important;
+  }
+}
+
+/* Throttle expensive operations */
+.map-container:hover path {
+  transition-delay: 0.05s;
+}
+
+/* Memory usage optimization */
+.map-container svg path {
+  /* Optimize memory usage for large numbers of paths */
+  vector-effect: non-scaling-stroke;
 }

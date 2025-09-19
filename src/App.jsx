@@ -34,8 +34,6 @@ function App() {
     setDarkMode(isDark)
     document.documentElement.classList.toggle('dark', isDark)
   }, [])
-  
-
 
   useEffect(() => {
     applyFilters()
@@ -135,27 +133,24 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
            
-              <div className='flex items-center space-x-3'>
-                <img src="/assets/espresso-logo.png"
-                
+            <div className='flex items-center space-x-3'>
+              <img src="/assets/espresso-logo.png"
                 alt='Espresso Logo'
                 width={null}
                 height={null}
                 style={{maxHeight: 48}}
-                />
-              </div>
-              
-              
-           
+              />
+            </div>
             
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center space-x-3"
             >
+              {/* FIXED: Hide embed button on mobile, move to bottom */}
               <button
                 onClick={() => setShowEmbed(!showEmbed)}
-                className="px-4 py-2 bg-white/90 hover:bg-gray-100 text-[#5c3a21] border border-[#5c3a21] rounded-lg font-medium transition-all duration-200 flex items-center"
+                className="hidden sm:flex px-4 py-2 bg-white/90 hover:bg-gray-100 text-[#5c3a21] border border-[#5c3a21] rounded-lg font-medium transition-all duration-200 items-center"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -185,12 +180,12 @@ function App() {
       {/* Main Content Container - Centered and Responsive */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
-          {/* Sidebar - Hidden on mobile, shown on xl screens */}
+          {/* Desktop Sidebar - Hidden on mobile, shown on xl screens */}
           <motion.aside
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="xl:col-span-1 order-2 xl:order-1"
+            className="hidden xl:block xl:col-span-1 order-2 xl:order-1"
           >
             <div className="sticky top-6 space-y-4 max-h-[calc(100vh-8rem)] overflow-y-auto">
               <SearchFilter
@@ -208,7 +203,7 @@ function App() {
             transition={{ delay: 0.2 }}
             className="xl:col-span-3 order-1 xl:order-2 space-y-6"
           >
-            {/* Mobile Filters - Only shown on mobile */}
+            {/* Mobile Filters - Only shown on mobile - FIXED: Only once */}
             <div className="xl:hidden">
               <SearchFilter
                 filters={filters}
@@ -278,6 +273,24 @@ function App() {
             </div>
           </motion.main>
         </div>
+      </div>
+
+      {/* FIXED: Mobile Embed Button at Bottom */}
+      <div className="sm:hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40">
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowEmbed(!showEmbed)}
+          className="px-6 py-3 bg-[#5c3a21] hover:bg-[#4a2f1a] text-white border border-[#5c3a21] rounded-full font-medium transition-all duration-200 flex items-center shadow-lg backdrop-blur-sm"
+        >
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+          Embed Map
+        </motion.button>
       </div>
 
       {/* Modals */}
