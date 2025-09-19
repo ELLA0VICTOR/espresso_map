@@ -94,7 +94,7 @@ function App() {
     document.documentElement.classList.toggle('dark', newDarkMode)
   }
 
-  if (isEmbedMode) {
+   if (isEmbedMode) {
     return (
       <div className="w-full h-screen bg-white dark:bg-gray-900">
         <WorldMap
